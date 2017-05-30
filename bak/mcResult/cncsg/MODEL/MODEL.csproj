@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D4F4341F-160A-49B8-A57C-8CCA25A20A64}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cn.csg.dpcp.model</RootNamespace>
+    <AssemblyName>CSGMODEL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CConfig.cs" />
+    <Compile Include="dataset\CBaseDataSet.cs" />
+    <Compile Include="dataset\CMCDeviceDataSet.cs" />
+    <Compile Include="table\mc\CMCGroundTable.cs" />
+    <Compile Include="table\mc\CMCResultTable.cs" />
+    <Compile Include="vo\mc\CMCGroundVo.cs" />
+    <Compile Include="vo\mc\CMCOneDotVo.cs" />
+    <Compile Include="vo\mc\CMCResultVo.cs" />
+    <Compile Include="table\mc\CMCOrderable.cs" />
+    <Compile Include="table\mc\CMCDeviceTable.cs" />
+    <Compile Include="table\mc\CMCAcSystemTable.cs" />
+    <Compile Include="table\mc\CMCConvertorTable.cs" />
+    <Compile Include="table\mc\CMCDcFilterTable.cs" />
+    <Compile Include="table\mc\CMCDcMetallLineTable.cs" />
+    <Compile Include="table\mc\CMCDcLineTable.cs" />
+    <Compile Include="table\mc\CMCGroundLineTable.cs" />
+    <Compile Include="table\mc\CMCpbDkqTable.cs" />
+    <Compile Include="table\mc\CMCTransformerTable.cs" />
+    <Compile Include="table\CBaseTable.cs" />
+    <Compile Include="table\mc\CMCAcFilterTable.cs" />
+    <Compile Include="vo\CNewProjectVo.cs" />
+    <Compile Include="vo\mc\CMCOrderVo.cs" />
+    <Compile Include="vo\mc\CMCConvertorVo.cs" />
+    <Compile Include="vo\mc\CXBDcFilterVo.cs" />
+    <Compile Include="vo\mc\CMCDcMetallLineVo.cs" />
+    <Compile Include="vo\mc\CMCAcSystemVo.cs" />
+    <Compile Include="vo\mc\CMCAcFilterVo.cs" />
+    <Compile Include="vo\mc\CMCDcLineVo.cs" />
+    <Compile Include="vo\mc\CMCGroundLineVo.cs" />
+    <Compile Include="vo\mc\CXBpbDkqVo.cs" />
+    <Compile Include="vo\mc\CMCTransformerVo.cs" />
+    <Compile Include="vo\mc\CMCDeviceVo.cs" />
+    <Compile Include="vo\mc\CMCTwoDotVo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Code\BaseFrame\BaseFrame.csproj">
+      <Project>{3f942745-8459-48f8-ac4d-a373a84bdebd}</Project>
+      <Name>BaseFrame</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\COMMON\COMMON.csproj">
+      <Project>{2E0A9D6E-3FCE-4698-BAEE-3818B4D3BE66}</Project>
+      <Name>COMMON</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
