@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{41D76EBB-204C-414F-B24E-C6A73701887D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hvdc.MT.mc</RootNamespace>
+    <AssemblyName>mcApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App\CmcDll.cs" />
+    <Compile Include="App\CmcMvcs.cs" />
+    <Compile Include="DataRw\CmcDataRwDcLine.cs" />
+    <Compile Include="DataRw\CmcDataRwBranch.cs" />
+    <Compile Include="DataRw\CmcDataRwTwo.cs" />
+    <Compile Include="DataRw\CmcDataRwOne.cs" />
+    <Compile Include="DataRw\CmcDataRwAcSys.cs" />
+    <Compile Include="DataRw\CmcDataRw.cs" />
+    <Compile Include="DataRw\CmcDataRwMvc.cs" />
+    <Compile Include="DataRw\CmcDataRwShunt.cs" />
+    <Compile Include="DataRw\CmcDataRwAcfilter.cs" />
+    <Compile Include="DataRw\CmcDataRwGroundLine.cs" />
+    <Compile Include="DataRw\CmcDataRwMetalLine.cs" />
+    <Compile Include="DataRw\CmcDataRwGround.cs" />
+    <Compile Include="DataRw\CmcDataRwConvertor.cs" />
+    <Compile Include="DataRw\CmcDataRwXf2.cs" />
+    <Compile Include="RwMvc\CmcDataRwResultMvc.cs" />
+    <Compile Include="RwMvc\CmcRwResultMvc.cs" />
+    <Compile Include="RwMvc\CmcRwOrderMvc.cs" />
+    <Compile Include="Def\CmcDef.cs" />
+    <Compile Include="Device\CmcDevAcFilter.cs" />
+    <Compile Include="Device\CmcDevAcSys.cs" />
+    <Compile Include="Device\CmcDevBase.cs" />
+    <Compile Include="Device\CmcDevBranch.cs" />
+    <Compile Include="Device\CmcDevConvertor.cs" />
+    <Compile Include="Device\CmcDevDcLine.cs" />
+    <Compile Include="Device\CmcDevGround.cs" />
+    <Compile Include="Device\CmcDevGroundLine.cs" />
+    <Compile Include="DevTBL\CmcDevTBL.cs" />
+    <Compile Include="Device\CmcDevMetalLine.cs" />
+    <Compile Include="Device\CmcDevOneDot.cs" />
+    <Compile Include="Device\CmcDevShunt.cs" />
+    <Compile Include="Device\CmcDevTwoDot.cs" />
+    <Compile Include="Device\CmcDevXf2.cs" />
+    <Compile Include="DevTBL\CmcDevStation.cs" />
+    <Compile Include="Func\CmcFunc.cs" />
+    <Compile Include="DevTBL\CmcHvdcGrid.cs" />
+    <Compile Include="App\CmcParams.cs" />
+    <Compile Include="Rw\CmcRw.cs" />
+    <Compile Include="Rw\CmcRwAcfilter.cs" />
+    <Compile Include="Rw\CmcRwAcSys.cs" />
+    <Compile Include="Rw\CmcRwBranch.cs" />
+    <Compile Include="Rw\CmcRwConvertor.cs" />
+    <Compile Include="Rw\CmcRwDcLine.cs" />
+    <Compile Include="Rw\CmcRwGround.cs" />
+    <Compile Include="Rw\CmcRwGroundLine.cs" />
+    <Compile Include="Rw\CmcRwMetalLine.cs" />
+    <Compile Include="RwMvc\CmcRwMvc.cs" />
+    <Compile Include="Rw\CmcRwOne.cs" />
+    <Compile Include="Rw\CmcRwShunt.cs" />
+    <Compile Include="Rw\CmcRwTwo.cs" />
+    <Compile Include="Rw\CmcRwXf2.cs" />
+    <Compile Include="App\CmcVars.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Solve\CmcOrder.cs" />
+    <Compile Include="Solve\CmcResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseFrame\BaseFrame.csproj">
+      <Project>{3f942745-8459-48f8-ac4d-a373a84bdebd}</Project>
+      <Name>BaseFrame</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HvdcCommon\HvdcCommon.csproj">
+      <Project>{7C290C39-DC74-43AF-8475-28F4A80FEB04}</Project>
+      <Name>HvdcCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xbApp\xbApp.csproj">
+      <Project>{81F96BCB-95F0-4221-A5B9-60A3EF891417}</Project>
+      <Name>xbApp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
