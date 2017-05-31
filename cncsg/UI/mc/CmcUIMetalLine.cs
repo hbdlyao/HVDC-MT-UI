@@ -47,24 +47,58 @@ namespace cn.csg.dpcp.ui.mc
             vo.ZrN =(double)numZrMax.Value;
         }
 
-        /// <summary>
-        /// 直流线路
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+  
         private void btnAddLine_Click(object sender, EventArgs e)
         {
             CDlgNewDCLine vLine = new CDlgNewDCLine();
             vLine.ShowDialog();
             if (vLine.Result == 1)
             {
-                // 新增成功
+                string[] vNames = vLine.Stations();
+                //
+                OnAddNew(vNames);
+
+                EnableControl();
+
             }
         }
 
-        private void buttonX1_Click(object sender, EventArgs e)
+        protected override void OnAddNew(string[] vNames)
         {
 
+            Device = DevTbl.NewDevice(deviceType, vNames[0]);
+
+            Device.StationNames[0] = vNames[1];
+            Device.StationNames[1] = vNames[2];
+
+            DevGrid.DeviceAdd(tblType, Device);
+
+            cboDeviceID.Items.Insert(0, vNames[0]);
+            deviceMap.Add(Device.DeviceName, Device);
+
+            cboDeviceID.SelectedIndex = 0;
+
         }
+
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            OnRemove();
+
+            EnableControl();
+
+        }
+
+        protected override void OnRemove()
+        {
+            DevGrid.DeviceRemove(tblType, Device);
+
+            cboDeviceID.Items.Remove(Device.DeviceName);
+            deviceMap.Remove(Device.DeviceName);
+
+            cboDeviceID.SelectedIndex = 0;
+        }
+
+
     }
 }

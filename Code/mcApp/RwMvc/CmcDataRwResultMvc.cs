@@ -58,7 +58,7 @@ namespace Hvdc.MT.mc.dataRw
             string vSQL;
             string tblName = "mcResult";
 
-            vSQL = "select * from "+ tblName;
+            vSQL = "select * from mcResult" ;
             vSQL = vSQL + " where CalName = ";
             vSQL = vSQL + " '";
             vSQL = vSQL + pResult.CalName;
@@ -67,10 +67,11 @@ namespace Hvdc.MT.mc.dataRw
 
 
             RwAdo.OpenTBL(vSQL, tblName);
-            pResult.daTable = RwAdo.daTBL;
+            //pResult.daTable = RwAdo.daTBL;
 
 
             RecResultData vData = new RecResultData();
+
             IList<string> vStr = new List<string>();
             CmcCase vCase;
 
@@ -84,12 +85,11 @@ namespace Hvdc.MT.mc.dataRw
                 vStr.Add(RwAdo.ReadString("StationName"));
                 //vStr.Add(RwAdo.ReadDouble("PdPercent").ToString());
 
-                vCase=pResult.NewCase(vStr);
+                vCase = pResult.NewCase(vStr);
 
-                //
-                doLoad(ref vData);
+                doLoadTable(ref vData);
 
-                vCase.AddRecord(vData);                        
+                vCase.AddRecord(vData);
 
 
             }//for
@@ -98,7 +98,7 @@ namespace Hvdc.MT.mc.dataRw
 
         }
 
-        protected void doLoad(ref RecResultData vData)
+        protected void doLoadTable(ref RecResultData vData)
         {
             vData.CalName = RwAdo.ReadString("CalName");
             vData.CaseID = RwAdo.ReadString("CaseID");
@@ -134,6 +134,106 @@ namespace Hvdc.MT.mc.dataRw
             vData.Qac6Valve = RwAdo.ReadDouble("Qac6Valve");
 
         }
+
+        public void OnSaveTable(string vCalName)
+        {
+
+            try
+            {
+                using (RwAdo.OpenDBF())
+                {
+                    doSaveTable(vCalName);
+
+                    //
+                    RwAdo.CloseDBF();
+
+                }//
+
+            }
+            catch (OleDbException)
+            {
+                throw;
+            }
+
+
+        }
+
+
+        protected void doSaveTable(string vCalName)
+        {
+            string vSQL;
+            string tblName = "mcResult";
+
+            vSQL = "select * from mcResult";
+            vSQL = vSQL + " where CalName = ";
+            vSQL = vSQL + " '";
+            vSQL = vSQL + pResult.CalName;
+            vSQL = vSQL + "' ";
+            vSQL = vSQL + "order by CalName,CaseID,StationName, PdPercent";
+
+
+            RwAdo.OpenTBL(vSQL, tblName);
+
+            //
+            RwAdo.ClearRow();
+
+            int vN = pResult.datDim;
+
+            for (int i = 0; i < vN; i++)
+            {
+                RwAdo.Record_AddNew();
+
+                doSaveTable(pResult.DataList[i]);
+
+            }//while
+
+
+            RwAdo.TBL_Update();
+            //
+            RwAdo.CloseTBL();
+
+
+        }
+
+        protected void doSaveTable(RecResultData vData)
+        {
+            RwAdo.SaveField("CalName", vData.CalName);
+            RwAdo.SaveField("CaseID", vData.CaseID);
+            RwAdo.SaveField("StationName", vData.StationName);
+            RwAdo.SaveField("PdPercent", vData.PdPer);
+
+          /*
+            vData.Uac = RwAdo.ReadDouble("Uac");
+            vData.Uv = RwAdo.ReadDouble("Uv");
+            vData.Udio = RwAdo.ReadDouble("Udio");
+            vData.Ud = RwAdo.ReadDouble("Ud");
+            vData.UdL = RwAdo.ReadDouble("UdL");
+            vData.Id = RwAdo.ReadDouble("DcId");
+            vData.Pd = RwAdo.ReadDouble("Pd");
+            vData.Pconv = RwAdo.ReadDouble("Pconv");
+            vData.Qconv = RwAdo.ReadDouble("Qconv");
+
+            vData.TC = RwAdo.ReadInt32("TC");
+            vData.alphaOrgamma = RwAdo.ReadDouble("alphaOrgamma");
+            vData.miu = RwAdo.ReadDouble("miu");
+            vData.Qf_max = RwAdo.ReadDouble("Qf_max");
+            vData.Qf_min = RwAdo.ReadDouble("Qf_min");
+
+            vData.Udio_N = RwAdo.ReadDouble("Udio_N");
+            vData.Uv_N = RwAdo.ReadDouble("Uv_N");
+
+            vData.Tk_N = RwAdo.ReadDouble("Tk_N");
+            vData.Tk = RwAdo.ReadDouble("Tk");
+
+            vData.Ud6Valve = RwAdo.ReadDouble("Ud6Valve");
+            vData.Pd6Valve = RwAdo.ReadDouble("Pd6Valve");
+
+            vData.Pac6Valve = RwAdo.ReadDouble("Pac6Valve");
+            vData.Qac6Valve = RwAdo.ReadDouble("Qac6Valve");
+            */
+
+        }
+
 
     }//end CxbDataRwOrderMvc
 

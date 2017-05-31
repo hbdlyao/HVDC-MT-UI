@@ -90,6 +90,8 @@ namespace cn.csg.dpcp.ui
         {
             gridType = vGridType;
             tblType = vTblType;
+            deviceType = vTblType;
+
             DevGrid = vGrid;
 
             //DevTbl = DevGrid.DeviceTBL(vTblType);
@@ -245,6 +247,16 @@ namespace cn.csg.dpcp.ui
         private void CfmBaseFrom_Load(object sender, System.EventArgs e)
         {
             //EnableControl();
+        }
+
+        protected virtual void OnAddNew(string[] vNames)
+        {
+            //
+        }
+
+        protected virtual void OnRemove()
+        {
+            //
         }
     }
 }

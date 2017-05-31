@@ -7,16 +7,19 @@
 ///////////////////////////////////////////////////////////
 
 using Hvdc.MT.HvdcCommon;
+using Hvdc.MT.mc.Def;
 using System.Collections.Generic;
 
 namespace Hvdc.MT.mc.Solve
 {
     public class CmcOrder : CHvdcOrder
     {
+
+        public int Is6Pulse = 0;
         /// <summary>
         /// 电压预设
         /// </summary>
-        public IList<UdCoustom> UdCustoms = new List<UdCoustom>();
+        public IList<RecUdCustom> UdCustoms = new List<RecUdCustom>();
 
         public override void Init()
         {
@@ -34,16 +37,11 @@ namespace Hvdc.MT.mc.Solve
 
         }
 
-        public int Is6Pulse = 0;
-
-        public struct UdCoustom
+        public override void Clear()
         {
-            //崔康生20170528-直流电压预设
-            public int PdIndex;
-            public double Ud21; //双极单阀
-            public double Ud22;//双极双阀
-            public double Ud11;//单极单阀
+            UdCustoms.Clear();
         }
+
 
     }//end CmcOrder
 

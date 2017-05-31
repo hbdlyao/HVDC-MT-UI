@@ -273,6 +273,7 @@ namespace cn.csg.dpcp.ui.mc
 
             //
             CaseToList();
+
         }
         // 加载工况列表
         private void CaseToList()
@@ -364,6 +365,14 @@ namespace cn.csg.dpcp.ui.mc
         private void btnLoad_Click(object sender, EventArgs e)
         {
             OnLoad();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //
+            string vCalName = "南网多端mc计算";
+            CmcMvcs.SaveResult(vCalName);
+
         }
     }
 }

@@ -133,6 +133,16 @@ namespace cn.csg.dpcp.ui.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Station {
+            get {
+                object obj = ResourceManager.GetObject("Station", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Unpinned {
             get {
                 object obj = ResourceManager.GetObject("Unpinned", resourceCulture);

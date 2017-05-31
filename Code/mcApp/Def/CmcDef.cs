@@ -22,7 +22,15 @@ namespace Hvdc.MT.mc.Def
     }//end CmcDef
 
 
-  
+    public struct RecUdCustom
+    {
+        //崔康生20170528-直流电压预设
+        public int PdIndex;
+        public double Ud21; //双极单阀
+        public double Ud22;//双极双阀
+        public double Ud11;//单极单阀
+    }
+
     //typedef map<string, struct_mcResultData> mc_ResultMap;
 
     //崔康生20170528-NewGrid

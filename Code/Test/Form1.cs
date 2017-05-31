@@ -101,7 +101,7 @@ namespace Hvdc.MT.UI.Test
             //CmcVars.pmcHvdcGrid.NewGrid(vNames);
 
 
-            CmcMvcs.LoadResultFromMC("南网多端mc计算");
+            CmcMvcs.LoadCase_FromMC("南网多端mc计算");
 
             MessageBox.Show("Load Over");
 

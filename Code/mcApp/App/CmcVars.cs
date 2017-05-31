@@ -26,6 +26,7 @@ namespace Hvdc.MT.mc.App
             pmcHvdcGrid = new CmcHvdcGrid();
 
             pOrder = new CmcOrder();
+            pOrder.CalName = "ÄÏÍø¶à¶Ëmc¼ÆËã";
 
             pResult = new CmcResult();
 

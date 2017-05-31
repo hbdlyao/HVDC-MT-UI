@@ -1,4 +1,5 @@
-﻿using Hvdc.MT.mc.Solve;
+﻿using Hvdc.MT.mc.Def;
+using Hvdc.MT.mc.Solve;
 using Yao.BaseFrame.Rw;
 
 namespace Hvdc.MT.mc.RwMvc
@@ -75,10 +76,12 @@ namespace Hvdc.MT.mc.RwMvc
                 pOrder.IsLoadSingle = RwAdo.ReadInt32("IsLoadSingle");
                 pOrder.PdSingle = RwAdo.ReadDouble("PdSingle");
                 pOrder.UdSingle = RwAdo.ReadDouble("UdSingle");
+
             }//while
 
             RwAdo.CloseTBL();
         }
+
         protected void doLoad_UdCustom()
         {
             string vSQL;
@@ -90,17 +93,18 @@ namespace Hvdc.MT.mc.RwMvc
             vSQL = vSQL + "' ";
             RwAdo.OpenSQL(vSQL);
 
+            //崔康生20170528-直流电压预设
+            RecUdCustom vUdCustom = new RecUdCustom();
+
             //cout << "Load---mcOrder_UdData---" << endl;
             while (RwAdo.Record_Read())
             {
-                //崔康生20170528-直流电压预设
-                CmcOrder.UdCoustom vUdCustom = new CmcOrder.UdCoustom();
-
                 vUdCustom.PdIndex = RwAdo.ReadInt32("PdIndex");
                 vUdCustom.Ud11 = RwAdo.ReadDouble("Ud_Ground11");
                 vUdCustom.Ud21 = RwAdo.ReadDouble("Ud_Ground21");
                 vUdCustom.Ud22 = RwAdo.ReadDouble("Ud_Ground22");
 
+                //
                 pOrder.UdCustoms.Add(vUdCustom);
 
             }//while
@@ -211,7 +215,7 @@ namespace Hvdc.MT.mc.RwMvc
             RwAdo.ExecSQL(vSQL);
 
             //崔康生20170528-直流电压预设
-            foreach (CmcOrder.UdCoustom vUdCustom in pOrder.UdCustoms)
+            foreach (RecUdCustom vUdCustom in pOrder.UdCustoms)
             {
                 //
                 //cout << "Save---" << tblName << "---" << endl;
@@ -238,7 +242,7 @@ namespace Hvdc.MT.mc.RwMvc
             //cout << " Finished mc_Order " << endl;
         }
 
-        protected void doSave_UdCustom1(CmcOrder.UdCoustom vUdCustom)
+        protected void doSave_UdCustom1(RecUdCustom vUdCustom)
         {
             SqlStr = SqlStr + "CalName, ";
             SqlParam = SqlParam + GetString(pOrder.CalName) + ",";

@@ -58,6 +58,9 @@ namespace Hvdc.MT.mc.App
 
             //
             CmcVars.pmcHvdcGrid.AddToStation();
+
+            //OnLoadOrder();
+
         }
 
         public static void OnSave(string vdbf)
@@ -116,10 +119,41 @@ namespace Hvdc.MT.mc.App
             vRwMvc.OnSave(CmcParams.dbfFile);
         }
 
-        public static DataTable LoadCase_FromMC(string vCalName)
+        public static void LoadCase_FromMC(string vCalName)
         {
             CmcVars.pResult.Clear();
             CmcVars.pResult.CalName=vCalName;
+
+
+            CmcRwResultMvc vRwMvc = new CmcRwResultMvc();
+
+            vRwMvc.InitAdo(CmcParams.dbfFile);
+            vRwMvc.InitResult(CmcVars.pResult);
+
+            vRwMvc.OnLoadTable(vCalName);
+
+        }
+
+        public static void SaveResult(string vCalName)
+        {
+            CmcVars.pResult.Clear();
+            CmcVars.pResult.CalName = vCalName;
+
+            //CmcRwResultMvc vRwMvc = new CmcRwResultMvc();
+
+            CmcDataRwResultMvc vRwMvc = new CmcDataRwResultMvc();
+            vRwMvc.InitAdo(CmcParams.dbfFile);
+            vRwMvc.InitResult(CmcVars.pResult);
+
+            vRwMvc.OnSaveTable(vCalName);
+
+        }
+
+
+        public static void LoadCase_FromMC1(string vCalName)
+        {
+            CmcVars.pResult.Clear();
+            CmcVars.pResult.CalName = vCalName;
 
 
             CmcDataRwResultMvc vRwMvc = new CmcDataRwResultMvc();
@@ -127,7 +161,7 @@ namespace Hvdc.MT.mc.App
             vRwMvc.InitAdo(CmcParams.dbfFile);
             vRwMvc.InitResult(CmcVars.pResult);
 
-            return vRwMvc.OnLoadTable(vCalName);
+            vRwMvc.OnLoadTable(vCalName);
 
         }
 

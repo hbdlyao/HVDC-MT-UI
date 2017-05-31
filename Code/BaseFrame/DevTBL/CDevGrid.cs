@@ -6,6 +6,7 @@
 //  Original author: open2
 ///////////////////////////////////////////////////////////
 
+using System;
 using System.Collections.Generic;
 using System.Data;
 using Yao.BaseFrame.Device;
@@ -106,6 +107,23 @@ namespace Yao.BaseFrame.DevTBL
             return pTables[vType];
         }
 
+        public virtual CDevBase NewDevice(int vtblType, int vDevType)
+        {
+            CDevBase vDev=DeviceTBL(vtblType).NewDevice(vDevType);
+
+            //AddToStation(vDev.StationNames[0], vDev);
+
+            return vDev;
+
+        }
+
+        public virtual void DeviceAdd(int vtblType,CDevBase vDev)
+        {
+            DeviceTBL(vtblType).DeviceAdd(vDev);
+            AddToStation(vDev.StationNames[0],vDev);
+        }
+
+ 
         public virtual void AddToStation()
         {
             pStations.Clear();
@@ -138,6 +156,31 @@ namespace Yao.BaseFrame.DevTBL
             //
             vSta = pStations[vStaName];
             vSta.DeviceAdd(vDev.DeviceType,vDev);
+
+        }
+
+        public virtual void DeviceRemove(int vtblType, CDevBase vDev)
+        {
+            DeviceTBL(vtblType).DeviceRemove(vDev);
+
+            RemoveFromStation(vDev.StationNames[0], vDev);
+
+            //
+            vDev.Dispose();
+
+        }
+
+
+        protected virtual void RemoveFromStation(string vStaName, CDevBase vDev)
+        {
+              if (pStations.ContainsKey(vStaName))
+            {
+                //
+                CDevStation vSta = pStations[vStaName];
+
+                vSta.DeviceRemove(vDev.DeviceType,vDev);
+
+            }
 
         }
 

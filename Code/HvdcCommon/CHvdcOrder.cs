@@ -43,6 +43,11 @@ namespace Hvdc.MT.HvdcCommon
 
         }
 
+        public virtual void Clear()
+        {
+
+        }
+
         public string CalName;
         /// <summary>
         /// 单极大地/金属回线/双极/双极并联

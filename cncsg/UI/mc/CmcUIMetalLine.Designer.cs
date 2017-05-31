@@ -46,6 +46,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numZrN)).BeginInit();
             this.SuspendLayout();
             // 
+            // btnApply
+            // 
+            this.btnApply.Location = new System.Drawing.Point(975, 821);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -207,7 +211,7 @@
             // 
             this.btnAddLine.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddLine.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddLine.Location = new System.Drawing.Point(445, 821);
+            this.btnAddLine.Location = new System.Drawing.Point(614, 818);
             this.btnAddLine.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAddLine.Name = "btnAddLine";
             this.btnAddLine.Size = new System.Drawing.Size(138, 40);
@@ -220,16 +224,16 @@
             // 
             this.btnRemove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnRemove.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnRemove.Location = new System.Drawing.Point(595, 821);
+            this.btnRemove.Location = new System.Drawing.Point(793, 818);
             this.btnRemove.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(138, 40);
             this.btnRemove.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRemove.TabIndex = 35;
             this.btnRemove.Text = "删除当前线路";
-            this.btnRemove.Click += new System.EventHandler(this.buttonX1_Click);
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // MCDcMetallLineUI
+            // CmcUIMetalLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -247,9 +251,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Margin = new System.Windows.Forms.Padding(20, 16, 20, 16);
-            this.Name = "MCDcMetallLineUI";
+            this.Name = "CmcUIMetalLine";
             this.Text = "MCAcFilterUI";
             this.Load += new System.EventHandler(this.MCDcMetalLineUI_Load);
+            this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.btnApply, 0);
             this.Controls.SetChildIndex(this.grpBoxDevice, 0);
             this.Controls.SetChildIndex(this.label2, 0);

@@ -1544,6 +1544,7 @@
             this.btnTrapRemove.Size = new System.Drawing.Size(114, 40);
             this.btnTrapRemove.TabIndex = 29;
             this.btnTrapRemove.Text = "删除";
+            this.btnTrapRemove.Click += new System.EventHandler(this.btnTrapRemove_Click);
             // 
             // btnTrapAddnew
             // 
@@ -1585,7 +1586,7 @@
             this.picBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picBox3.BackColor = System.Drawing.SystemColors.Control;
             this.picBox3.Image = ((System.Drawing.Image)(resources.GetObject("picBox3.Image")));
-            this.picBox3.Location = new System.Drawing.Point(1483, 49);
+            this.picBox3.Location = new System.Drawing.Point(1408, 14);
             this.picBox3.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.picBox3.Name = "picBox3";
             this.picBox3.Size = new System.Drawing.Size(292, 350);
@@ -1595,14 +1596,15 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(6, 49);
+            this.pictureBox1.Image = global::cn.csg.dpcp.ui.Properties.Resources.Station;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 48);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(908, 360);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // CxbUIDevParam
             // 

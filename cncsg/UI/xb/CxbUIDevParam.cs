@@ -670,11 +670,17 @@ namespace cn.csg.dpcp.ui.xb
         /// <param name="e"></param>
         private void lstMonitor_SelectedIndexChanged(object sender, EventArgs e)
         {
+            OnMonitorClick();
+        }
+
+        private void OnMonitorClick()
+        {
             dgvMonitor.Rows.Clear();
             string deviceName = lstMonitor.SelectedItem.ToString();
             CxbDevMonitor monitor = monitorMap[deviceName];
             List<CDevBase> voList = monitor.Children();
-            foreach (CDevBase basevo in voList) {
+            foreach (CDevBase basevo in voList)
+            {
                 CxbDevBranch vo = basevo as CxbDevBranch;
                 dgvMonitor.Rows.Add(new object[] { vo.StationNames[0], vo.DeviceName, vo.NodeNames[0], vo.NodeNames[1],
                     vo.PosOrNeg, vo.Zr, vo.Z_L, vo.Z_C, monitor.DeviceName });
@@ -701,23 +707,83 @@ namespace cn.csg.dpcp.ui.xb
 
         private void btnMonitorAddnew_Click(object sender, EventArgs e)
         {
-            CxbUINewRLCs vLine = new CxbUINewRLCs("监控装置");
-            vLine.ShowDialog();
-            if (vLine.Result == 1)
+            CxbUINewRLCs vDLG = new CxbUINewRLCs("监控装置");
+            vDLG.ShowDialog();
+            if (vDLG.Result == 1)
             {
-                // 新增成功
+                string[] vNames = vDLG.InputValues();
+                //
+                OnMonitorAddNew(vNames);
+                //
+                OnMonitorClick();
+                //
+                EnableControl();
+
+
             }
         }
 
+        protected void OnMonitorAddNew(string[] vNames)
+        {
+            string deviceName = lstMonitor.SelectedItem.ToString();
+            CxbDevMonitor monitor = monitorMap[deviceName];
+
+            CDevBase vDev = CxbDevTBL.xbNewDevice(CxbDef.xb_Branch);
+
+            vDev.DeviceID = vNames[0];
+            vDev.DeviceName = vNames[0];
+            //vDev.DeviceType = CxbDef.xb_Branch;
+
+            vDev.NodeNames[0] = vNames[1];
+            vDev.NodeNames[1] = vNames[2];
+
+            vDev.StationNames[0] = cboStation.Text;
+
+            monitor.Add(vDev);
+
+
+        }
+
+
         private void btnTrapAddnew_Click(object sender, EventArgs e)
         {
-            CxbUINewRLCs vLine = new CxbUINewRLCs("阻波器");
-            vLine.ShowDialog();
-            if (vLine.Result == 1)
+            CxbUINewRLCs vDLG = new CxbUINewRLCs("阻波器");
+            vDLG.ShowDialog();
+            if (vDLG.Result == 1)
             {
-                // 新增成功
+                string[] vNames = vDLG.InputValues();
+                //
+                OnTrapAddNew(vNames);
+
+                //
+                OnTrapClick();
+
+                //
+                EnableControl();
             }
         }
+
+
+        protected void OnTrapAddNew(string[] vNames)
+        {
+            string deviceName = lstTrap.SelectedItem.ToString();
+            CxbDevTrap trap = trapMap[deviceName];
+
+            CDevBase vDev = CxbDevTBL.xbNewDevice(CxbDef.xb_Branch);
+
+            vDev.DeviceID = vNames[0];
+            vDev.DeviceName = vNames[0];
+            //vDev.DeviceType = CxbDef.xb_Branch;
+
+            vDev.NodeNames[0] = vNames[1];
+            vDev.NodeNames[1] = vNames[2];
+
+            vDev.StationNames[0] = cboStation.Text;
+
+            trap.Add(vDev);
+        }
+
+
 
         /// <summary>
         /// 阻波器列表选择
@@ -725,6 +791,11 @@ namespace cn.csg.dpcp.ui.xb
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void lstTrap_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OnTrapClick();
+        }
+
+        private void OnTrapClick()
         {
             dgvTrap.Rows.Clear();
             string deviceName = lstTrap.SelectedItem.ToString();
@@ -742,6 +813,18 @@ namespace cn.csg.dpcp.ui.xb
         {
             CzkUITxBase vUi = new CzkUITxBase();
             vUi.ShowDialog();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTrapRemove_Click(object sender, EventArgs e)
+        {
+            //string deviceName = lstTrap.SelectedItem.ToString();
+            //CxbDevTrap trap = trapMap[deviceName];
+
         }
     }
 }

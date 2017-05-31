@@ -1,4 +1,6 @@
 ﻿using cn.csg.dpcp.common;
+using Hvdc.MT.mc.App;
+using Hvdc.MT.mc.DevTBL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Yao.BaseFrame.DevTBL;
 
 namespace cn.csg.dpcp.ui
 {
@@ -34,14 +37,14 @@ namespace cn.csg.dpcp.ui
 
         public string[] Stations()
         {
-            return new string[] { txtLineName.Text, txtStation1.Text, txtStation2.Text };
+            return new string[] { txtLineName.Text, cboStation1.Text, cboStation2.Text };
         }
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
             try
             {
-                valivate();
+                validate();
                 result = 1;
                 Close();
             }
@@ -52,26 +55,38 @@ namespace cn.csg.dpcp.ui
             }
         }
 
-        private void valivate()
+        private void validate()
         {
-            if (StringUtil.IsEmpty(txtStation1.Text))
+            if (StringUtil.IsEmpty(txtLineName.Text))
             {
                 throw new Exception("请输入线路名称");
             }
-            if (StringUtil.IsEmpty(txtStation1.Text))
-            {
-                throw new Exception("请输入首端换流站");
-            }
-            if (StringUtil.IsEmpty(txtStation2.Text))
-            {
-                throw new Exception("请输入末端换流站");
-            }
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             result = -1;
             Close();
+        }
+
+        private void CDlgNewDCLine_Load(object sender, EventArgs e)
+        {
+            //
+            foreach (KeyValuePair<string,CDevStation> vPair in CmcVars.pmcHvdcGrid.Stations())
+            {
+                cboStation1.Items.Add(vPair.Key);
+                cboStation2.Items.Add(vPair.Key);
+            }
+
+            if (cboStation1.Items.Count > 0)
+            {
+                cboStation1.SelectedIndex = 0;
+                cboStation2.SelectedIndex = 0;
+            }
+
+
+
         }
     }
 }

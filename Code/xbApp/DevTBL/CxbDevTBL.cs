@@ -119,6 +119,7 @@ namespace Hvdc.MT.xb.DevTBL
             }//switch
 
             vDev.Init();
+            vDev.DeviceType = vDevType;
 
             return vDev;
         }

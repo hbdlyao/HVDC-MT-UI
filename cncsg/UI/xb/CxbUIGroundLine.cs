@@ -25,7 +25,7 @@ namespace cn.csg.dpcp.ui.xb
         // 用以标识新增新路名后的数字，如“新增线路X”
         private int newLineSeq = 1;
 
-        private const string newLine = "新线路";
+        private const string newLine = "新线段";
 
         private CxbDevGroundLine_Seg DevSeg = null;
 
@@ -322,9 +322,10 @@ namespace cn.csg.dpcp.ui.xb
 
         protected override void EnableControl()
         {
-            btnRemove.Enabled = lstLine.Items.Count > 0;
+            btnRemoveSeg.Enabled = lstLine.Items.Count > 0;
 
             lblLineCount.Text = lstLine.Items.Count.ToString();
         }
+
     }
 }

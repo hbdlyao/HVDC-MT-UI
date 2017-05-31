@@ -30,11 +30,12 @@ namespace cn.csg.dpcp.ui.mc
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstCase = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtCase = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnExportAll = new DevComponents.DotNetBar.ButtonX();
             this.btnExportSelected = new DevComponents.DotNetBar.ButtonX();
             this.btnCoundQ = new DevComponents.DotNetBar.ButtonX();
@@ -69,7 +70,7 @@ namespace cn.csg.dpcp.ui.mc
             this.btnLoad = new DevComponents.DotNetBar.ButtonX();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtCase = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -80,9 +81,11 @@ namespace cn.csg.dpcp.ui.mc
             // 
             this.groupBox1.Controls.Add(this.lstCase);
             this.groupBox1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.Location = new System.Drawing.Point(24, 3);
+            this.groupBox1.Location = new System.Drawing.Point(44, 5);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(169, 87);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.groupBox1.Size = new System.Drawing.Size(310, 152);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "工况选择";
@@ -95,10 +98,11 @@ namespace cn.csg.dpcp.ui.mc
             this.lstCase.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstCase.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lstCase.FormattingEnabled = true;
-            this.lstCase.ItemHeight = 12;
-            this.lstCase.Location = new System.Drawing.Point(6, 20);
+            this.lstCase.ItemHeight = 21;
+            this.lstCase.Location = new System.Drawing.Point(11, 35);
+            this.lstCase.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.lstCase.Name = "lstCase";
-            this.lstCase.Size = new System.Drawing.Size(158, 60);
+            this.lstCase.Size = new System.Drawing.Size(290, 105);
             this.lstCase.TabIndex = 1;
             this.lstCase.SelectedIndexChanged += new System.EventHandler(this.lstCase_SelectedIndexChanged);
             // 
@@ -109,12 +113,28 @@ namespace cn.csg.dpcp.ui.mc
             this.groupBox2.Controls.Add(this.btnExportSelected);
             this.groupBox2.Controls.Add(this.btnCoundQ);
             this.groupBox2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox2.Location = new System.Drawing.Point(352, 3);
+            this.groupBox2.Location = new System.Drawing.Point(645, 5);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 87);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.groupBox2.Size = new System.Drawing.Size(367, 152);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "操作";
+            // 
+            // txtCase
+            // 
+            // 
+            // 
+            // 
+            this.txtCase.Border.Class = "TextBoxBorder";
+            this.txtCase.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCase.Location = new System.Drawing.Point(11, 40);
+            this.txtCase.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtCase.Name = "txtCase";
+            this.txtCase.PreventEnterBeep = true;
+            this.txtCase.Size = new System.Drawing.Size(183, 31);
+            this.txtCase.TabIndex = 10;
             // 
             // btnExportAll
             // 
@@ -124,9 +144,10 @@ namespace cn.csg.dpcp.ui.mc
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExportAll.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnExportAll.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnExportAll.Location = new System.Drawing.Point(102, 58);
+            this.btnExportAll.Location = new System.Drawing.Point(187, 102);
+            this.btnExportAll.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnExportAll.Name = "btnExportAll";
-            this.btnExportAll.Size = new System.Drawing.Size(92, 23);
+            this.btnExportAll.Size = new System.Drawing.Size(169, 40);
             this.btnExportAll.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
             this.btnExportAll.TabIndex = 4;
             this.btnExportAll.Text = "导出所有工况";
@@ -140,9 +161,10 @@ namespace cn.csg.dpcp.ui.mc
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExportSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnExportSelected.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnExportSelected.Location = new System.Drawing.Point(6, 58);
+            this.btnExportSelected.Location = new System.Drawing.Point(11, 102);
+            this.btnExportSelected.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnExportSelected.Name = "btnExportSelected";
-            this.btnExportSelected.Size = new System.Drawing.Size(90, 23);
+            this.btnExportSelected.Size = new System.Drawing.Size(165, 40);
             this.btnExportSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
             this.btnExportSelected.TabIndex = 3;
             this.btnExportSelected.Text = "导出选中工况";
@@ -156,9 +178,10 @@ namespace cn.csg.dpcp.ui.mc
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCoundQ.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCoundQ.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCoundQ.Location = new System.Drawing.Point(119, 20);
+            this.btnCoundQ.Location = new System.Drawing.Point(218, 35);
+            this.btnCoundQ.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnCoundQ.Name = "btnCoundQ";
-            this.btnCoundQ.Size = new System.Drawing.Size(75, 23);
+            this.btnCoundQ.Size = new System.Drawing.Size(138, 40);
             this.btnCoundQ.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
             this.btnCoundQ.TabIndex = 2;
             this.btnCoundQ.Text = "工况查询";
@@ -171,9 +194,10 @@ namespace cn.csg.dpcp.ui.mc
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(558, 67);
+            this.label1.Location = new System.Drawing.Point(1023, 117);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 12);
+            this.label1.Size = new System.Drawing.Size(222, 21);
             this.label1.TabIndex = 3;
             this.label1.Text = "理想空载额定电压(kV)";
             // 
@@ -184,9 +208,10 @@ namespace cn.csg.dpcp.ui.mc
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(558, 26);
+            this.label8.Location = new System.Drawing.Point(1023, 46);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 12);
+            this.label8.Size = new System.Drawing.Size(180, 21);
             this.label8.TabIndex = 3;
             this.label8.Text = "阀侧额定电压(kV)";
             // 
@@ -200,14 +225,14 @@ namespace cn.csg.dpcp.ui.mc
             this.dgv.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PdPer,
@@ -233,21 +258,22 @@ namespace cn.csg.dpcp.ui.mc
             this.Pd6Valve,
             this.Pac6Valve,
             this.Qac6Valve});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgv.Location = new System.Drawing.Point(0, 96);
+            this.dgv.Location = new System.Drawing.Point(0, 168);
+            this.dgv.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RowTemplate.Height = 23;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1076, 470);
+            this.dgv.Size = new System.Drawing.Size(1973, 822);
             this.dgv.TabIndex = 4;
             this.dgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
             // 
@@ -417,9 +443,11 @@ namespace cn.csg.dpcp.ui.mc
             // 
             this.groupBox3.Controls.Add(this.lstStation);
             this.groupBox3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox3.Location = new System.Drawing.Point(197, 3);
+            this.groupBox3.Location = new System.Drawing.Point(361, 5);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(148, 87);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.groupBox3.Size = new System.Drawing.Size(271, 152);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "整流站选择";
@@ -432,10 +460,11 @@ namespace cn.csg.dpcp.ui.mc
             this.lstStation.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstStation.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lstStation.FormattingEnabled = true;
-            this.lstStation.ItemHeight = 12;
-            this.lstStation.Location = new System.Drawing.Point(6, 20);
+            this.lstStation.ItemHeight = 21;
+            this.lstStation.Location = new System.Drawing.Point(11, 35);
+            this.lstStation.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.lstStation.Name = "lstStation";
-            this.lstStation.Size = new System.Drawing.Size(135, 60);
+            this.lstStation.Size = new System.Drawing.Size(248, 105);
             this.lstStation.TabIndex = 6;
             this.lstStation.SelectedIndexChanged += new System.EventHandler(this.lstStation_SelectedIndexChanged);
             // 
@@ -443,9 +472,10 @@ namespace cn.csg.dpcp.ui.mc
             // 
             this.btnLoad.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnLoad.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnLoad.Location = new System.Drawing.Point(837, 61);
+            this.btnLoad.Location = new System.Drawing.Point(1535, 107);
+            this.btnLoad.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.Size = new System.Drawing.Size(138, 40);
             this.btnLoad.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnLoad.TabIndex = 7;
             this.btnLoad.Text = "读入数据";
@@ -458,10 +488,11 @@ namespace cn.csg.dpcp.ui.mc
             // 
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(698, 21);
+            this.textBoxX1.Location = new System.Drawing.Point(1280, 37);
+            this.textBoxX1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(100, 21);
+            this.textBoxX1.Size = new System.Drawing.Size(183, 31);
             this.textBoxX1.TabIndex = 8;
             // 
             // textBoxX2
@@ -471,30 +502,30 @@ namespace cn.csg.dpcp.ui.mc
             // 
             this.textBoxX2.Border.Class = "TextBoxBorder";
             this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.Location = new System.Drawing.Point(698, 62);
+            this.textBoxX2.Location = new System.Drawing.Point(1280, 108);
+            this.textBoxX2.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.PreventEnterBeep = true;
-            this.textBoxX2.Size = new System.Drawing.Size(100, 21);
+            this.textBoxX2.Size = new System.Drawing.Size(183, 31);
             this.textBoxX2.TabIndex = 9;
             // 
-            // txtCase
+            // button1
             // 
+            this.button1.Location = new System.Drawing.Point(1535, 40);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(129, 40);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // CmcUIResult
             // 
-            // 
-            this.txtCase.Border.Class = "TextBoxBorder";
-            this.txtCase.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCase.Location = new System.Drawing.Point(6, 23);
-            this.txtCase.Name = "txtCase";
-            this.txtCase.PreventEnterBeep = true;
-            this.txtCase.Size = new System.Drawing.Size(100, 21);
-            this.txtCase.TabIndex = 10;
-            // 
-            // MCResultUI
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1076, 566);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1973, 990);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxX2);
             this.Controls.Add(this.textBoxX1);
             this.Controls.Add(this.btnLoad);
@@ -505,7 +536,8 @@ namespace cn.csg.dpcp.ui.mc
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Name = "MCResultUI";
+            this.Margin = new System.Windows.Forms.Padding(11, 9, 11, 9);
+            this.Name = "CmcUIResult";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "主回路状态计算-结果查看";
             this.Load += new System.EventHandler(this.MCCalcResultUI_Load);
@@ -558,5 +590,6 @@ namespace cn.csg.dpcp.ui.mc
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
         private DevComponents.DotNetBar.Controls.TextBoxX txtCase;
+        private Button button1;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using cn.csg.dpcp.common;
 using Hvdc.MT.mc.App;
+using Hvdc.MT.mc.Def;
 using Hvdc.MT.mc.Solve;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace cn.csg.dpcp.ui.mc
 {
     public partial class CmcUIUdCustom : CfmBaseFrom
     {
-        private IList<UdCoustom> udCustomList;
+        private IList<RecUdCustom> udCustomList;
 
         public CmcUIUdCustom()
         {
@@ -21,18 +22,24 @@ namespace cn.csg.dpcp.ui.mc
 
         private void MCOrderUdCustomUI_Load(object sender, EventArgs e)
         {
+            //CmcVars.pOrder.CalName = "南网多端mc计算";
+
+            CmcVars.pOrder.Clear();
+            CmcMvcs.OnLoadOrder();
+
             udCustomList = CmcVars.pOrder.UdCustoms;
 
             DevToUI();
+
         }
 
 
         protected override void DevToUI()
         {
             chkIsDefault.Checked = CmcVars.pOrder.IsUdCustom == 1;
-            foreach (CmcOrder.UdCoustom custom in udCustomList)
+            foreach (RecUdCustom vUdCustom in udCustomList)
             {
-                dgvCustom.Rows.Add(new object[] { custom.Ud22, custom.Ud21, custom.Ud11 });
+                dgvCustom.Rows.Add(new object[] { vUdCustom.PdIndex, vUdCustom.Ud22, vUdCustom.Ud21, vUdCustom.Ud11 });
 
             }
         }
@@ -43,7 +50,7 @@ namespace cn.csg.dpcp.ui.mc
             udCustomList.Clear();
             for (int i = 0; i < dgvCustom.Rows.Count - 1; i++)
             {
-                CmcOrder.UdCoustom custom = new CmcOrder.UdCoustom();
+                RecUdCustom custom = new RecUdCustom();
                 custom.Ud22 = double.Parse(dgvCustom.Rows[i].Cells["Ud22"].Value.ToString());
                 custom.Ud21 = double.Parse(dgvCustom.Rows[i].Cells["Ud21"].Value.ToString());
                 custom.Ud11 = double.Parse(dgvCustom.Rows[i].Cells["Ud11"].Value.ToString());
@@ -60,6 +67,7 @@ namespace cn.csg.dpcp.ui.mc
             OnApply();
 
             CmcMvcs.OnSaveOrder();
+
         }
     }
 

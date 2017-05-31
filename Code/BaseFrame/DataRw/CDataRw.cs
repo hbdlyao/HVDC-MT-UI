@@ -96,7 +96,10 @@ namespace Yao.BaseFrame.dataRw
 
         public void CloseDBF()
         {
+            daSet.Dispose();
+
             pConnection.Close();
+
         }
 
         /// 
@@ -104,11 +107,14 @@ namespace Yao.BaseFrame.dataRw
         public DataTable OpenTBL(string vSQL, string vTBL)
         {
             daAdapter = new OleDbDataAdapter(vSQL, pConnection);
+
             daAdapter.Fill(daSet,vTBL);
 
             daTBL = daSet.Tables[vTBL];
 
             daRows = daTBL.Rows;
+
+            //daAdapter.Dispose();
 
             return daTBL;
 
@@ -116,7 +122,11 @@ namespace Yao.BaseFrame.dataRw
 
         public void CloseTBL()
         {
-           //pRecordset.Close();
+            //pRecordset.Close();
+            
+            //daTBL.Dispose();
+
+
         }
 
         public void ClearRow()

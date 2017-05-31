@@ -13,13 +13,19 @@ namespace Hvdc.MT.mc.Solve
     {
         public DataTable daTable;
 
-        //public List<RecResultData> DataList = new List<RecResultData>();
+        public List<RecResultData> DataList = new List<RecResultData>();
 
         protected CmcCasePack CasePack=new CmcCasePack();
 
         public string CalName { get; set; }
 
-        public int datDim { get; set; }
+        public int datDim
+        {
+            get
+            {
+                return DataList.Count;
+            }
+        }
 
         public void Clear()
         {

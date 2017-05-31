@@ -27,7 +27,7 @@ namespace cn.csg.dpcp.ui.xb
         // 用以标识新增新路名后的数字，如“新增线路X”
         private int newLineSeq = 1;
 
-        private const string newLine = "新线路";
+        private const string newLine = "新线段";
 
         private CxbDevDcLine_Seg DevSeg = null;
 
@@ -342,24 +342,60 @@ namespace cn.csg.dpcp.ui.xb
 
         protected override void EnableControl()
         {
-            btnRemove.Enabled = lstLine.Items.Count > 0;
+            btnRemoveSeg.Enabled = lstLine.Items.Count > 0;
 
             lblLineCount.Text = lstLine.Items.Count.ToString();
         }
 
-        /// <summary>
-        /// 直流线路
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnAddLine_Click(object sender, EventArgs e)
         {
             CDlgNewDCLine vLine = new CDlgNewDCLine();
             vLine.ShowDialog();
             if (vLine.Result == 1)
             {
-                // 新增成功
+                string[] vNames = vLine.Stations();
+                //
+                OnAddNew(vNames);
+                //
+                EnableControl();
+
             }
+        }
+
+        protected override void OnAddNew(string[] vNames)
+        {
+            //DevGrid.New
+
+            Device = DevTbl.NewDevice(deviceType, vNames[0]);
+
+            Device.StationNames[0] = vNames[1];
+            Device.StationNames[1] = vNames[2];
+
+            DevGrid.DeviceAdd(tblType, Device);
+
+            cboStation.Items.Insert(0, vNames[0]);
+            deviceMap.Add(Device.DeviceName, Device);
+
+            cboStation.SelectedIndex = 0;
+
+        }
+
+        private void btnRemoveLine_Click(object sender, EventArgs e)
+        {
+            OnRemove();
+
+            EnableControl();
+
+        }
+
+        protected override void OnRemove()
+        {
+            DevGrid.DeviceRemove(tblType,Device);
+
+            cboStation.Items.Remove(Device.DeviceName);
+            deviceMap.Remove(Device.DeviceName);
+
+            cboStation.SelectedIndex = 0;
         }
     }
 }
